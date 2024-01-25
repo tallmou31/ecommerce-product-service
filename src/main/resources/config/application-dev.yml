@@ -50,7 +50,7 @@ spring:
     type: com.zaxxer.hikari.HikariDataSource
     url: jdbc:mysql://localhost:3306/productservice?useUnicode=true&characterEncoding=utf8&useSSL=false&useLegacyDatetimeCode=false&serverTimezone=UTC&createDatabaseIfNotExist=true
     username: root
-    password:
+    password: root
     hikari:
       poolName: Hikari
       auto-commit: false
@@ -105,7 +105,7 @@ jhipster:
     authentication:
       jwt:
         # This token must be encoded using Base64 and be at least 256 bits long (you can type `openssl rand -base64 64` on your command line to generate a 512 bits one)
-        base64-secret: MjJhNTQwOTYwZGY2OTA4ZmRhMzczNTBhZjVmNmQ1YjkyYzgzZTJhNjQ5ZTJkMjAzZGJiYzU5OTc1MTM2ODQyZjcwMWZiZDJlMzJkN2E2Y2UyN2Q2MjdjMzMyOWVmNWY4OTk1ODE3NjRiZjA3ZDc4MzhmMmE3YTRmYjc4OWY2ZDY=
+        base64-secret: MWJkZTg2NTA4ZGYxOWJhNWIxYjNmNmNiOTFkYzQ2OGU5MDBiMGE3NTliMzQ2YTRmOGU0MTQ1MzYzZTE5MTE0M2U4MzliZWVkMWZmNWUyMzlhZDk2NDE4MmVhMzIwMGFiZjgxYmVkN2QwOTgyOGYyZDExZTQ4NTliZjY4N2QzZmQ=
         # Token is valid 24 hours
         token-validity-in-seconds: 86400
         token-validity-in-seconds-for-remember-me: 2592000

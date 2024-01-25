@@ -1,7 +1,7 @@
 {
   "generator-jhipster:7.9.4": {
     "promptValues": {
-      "packageName": "sn.esmt.mp2isi",
+      "packageName": "sn.esmt.mp2isi.ecommerce.productservice",
       "nativeLanguage": "fr"
     }
   }
