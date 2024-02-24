@@ -29,7 +29,7 @@ public class CustomUnauthorizedRequestException extends AbstractThrowableProblem
             detail,
             null,
             null,
-            getAlertParameters()
+            getAlertParameters(detail)
         );
         this.entityName = "PRODUCT_SERVICE";
         this.errorKey = "UNAUTHORIZED";
@@ -39,9 +39,9 @@ public class CustomUnauthorizedRequestException extends AbstractThrowableProblem
         this(null, detail);
     }
 
-    private static Map<String, Object> getAlertParameters() {
+    private static Map<String, Object> getAlertParameters(String detail) {
         Map<String, Object> parameters = new HashMap<>();
-        parameters.put("message", "error." + "UNAUTHORIZED");
+        parameters.put("message", detail);
         parameters.put("params", "PRODUCT_SERVICE");
         return parameters;
     }

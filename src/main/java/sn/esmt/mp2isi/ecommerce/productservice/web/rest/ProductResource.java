@@ -5,6 +5,7 @@ import java.net.URISyntaxException;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
+import java.util.stream.Collectors;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import org.slf4j.Logger;
@@ -22,6 +23,9 @@ import sn.esmt.mp2isi.ecommerce.productservice.repository.ProductRepository;
 import sn.esmt.mp2isi.ecommerce.productservice.service.ProductQueryService;
 import sn.esmt.mp2isi.ecommerce.productservice.service.ProductService;
 import sn.esmt.mp2isi.ecommerce.productservice.service.criteria.ProductCriteria;
+import sn.esmt.mp2isi.ecommerce.productservice.service.dto.ListHolderDTO;
+import sn.esmt.mp2isi.ecommerce.productservice.service.dto.OrderRequestDTO;
+import sn.esmt.mp2isi.ecommerce.productservice.service.dto.OrderResponseDTO;
 import sn.esmt.mp2isi.ecommerce.productservice.service.dto.ProductDTO;
 import sn.esmt.mp2isi.ecommerce.productservice.web.rest.errors.BadRequestAlertException;
 import tech.jhipster.web.util.HeaderUtil;
@@ -206,5 +210,24 @@ public class ProductResource {
             .noContent()
             .headers(HeaderUtil.createEntityDeletionAlert(applicationName, false, ENTITY_NAME, id.toString()))
             .build();
+    }
+
+    @PostMapping("/products/validate-order")
+    @PreAuthorize("isAuthenticated()")
+    public ResponseEntity<OrderResponseDTO> validateOrder(@RequestBody OrderRequestDTO order) {
+        return ResponseEntity.ok(productService.validateOrder(order));
+    }
+
+    @PostMapping("/products/cancel-order")
+    @PreAuthorize("isAuthenticated()")
+    public ResponseEntity<Void> cancelOrder(@RequestBody OrderRequestDTO order) {
+        productService.cancelOrder(order);
+        return ResponseEntity.ok().build();
+    }
+
+    @PostMapping("/products/get-all-ids")
+    public ResponseEntity<List<ProductDTO>> getAllProductsByIds(@RequestBody ListHolderDTO<Long> ids) {
+        var products = ids.getItems().stream().map(id -> productService.findOne(id).orElseThrow()).collect(Collectors.toList());
+        return ResponseEntity.ok(products);
     }
 }

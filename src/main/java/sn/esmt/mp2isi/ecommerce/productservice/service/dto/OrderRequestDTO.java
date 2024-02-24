@@ -1,0 +1,16 @@
+package sn.esmt.mp2isi.ecommerce.productservice.service.dto;
+
+import java.util.Set;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+public class OrderRequestDTO {
+
+    private Set<OrderItemRequestDTO> items;
+}

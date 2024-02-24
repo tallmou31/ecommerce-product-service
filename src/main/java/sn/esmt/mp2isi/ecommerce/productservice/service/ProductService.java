@@ -4,6 +4,8 @@ import java.util.Optional;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import sn.esmt.mp2isi.ecommerce.productservice.domain.Product;
+import sn.esmt.mp2isi.ecommerce.productservice.service.dto.OrderRequestDTO;
+import sn.esmt.mp2isi.ecommerce.productservice.service.dto.OrderResponseDTO;
 import sn.esmt.mp2isi.ecommerce.productservice.service.dto.ProductDTO;
 
 /**
@@ -56,4 +58,8 @@ public interface ProductService {
      * @param id the id of the entity.
      */
     void delete(Long id);
+
+    OrderResponseDTO validateOrder(OrderRequestDTO order);
+
+    void cancelOrder(OrderRequestDTO order);
 }
